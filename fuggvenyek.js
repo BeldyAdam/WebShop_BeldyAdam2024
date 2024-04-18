@@ -27,3 +27,5 @@ export function listaMegjelenit(lista) {
     const termekekELEM = $(".termekek");
     termekekELEM.append(listaOsszeallit(lista));
 }
+
+/* asd */
