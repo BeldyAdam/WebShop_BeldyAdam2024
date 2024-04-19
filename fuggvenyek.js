@@ -1,5 +1,13 @@
 import { kosarhozAd } from "./basket.js";
 import { kosar } from "./basket.js";
+import { osszErtek } from "./basket.js";
+
+export function szures(lista, keresoSzoveg) {
+  const szurtLista = lista.filter(function(termek){
+      return termek.nev.toUpperCase().includes(keresoSzoveg.toUpperCase());
+  });
+  return szurtLista;
+}
 
 export function listaOsszeallit(lista) {
   console.log(lista);
@@ -10,14 +18,16 @@ export function listaOsszeallit(lista) {
       let kep = $(`<img src="${lista[index].kep}" class="card-img-top" alt="${lista[index].nev}">`);
       let kartyaBody = $(`<div class="card-body"></div>`);
       let kartyaCim = $(`<h5 class="card-title">${lista[index].nev}</h5>`);
+      let kartyaAr = $(`<p>${lista[index].ar}Ft</p>`)
       let kartyaLeiras = $(`<p class="card-text">${lista[index].leiras}</p>`);
       let kartyaGombb = $(`<button class="btn btn-primary">Kosárba</button>`);
       kartyaGombb.on("click", function(){
           kosarhozAd(lista[index]);
+          kosarMegjelenit(kosar);
           console.log(kosar);
       });
       kartya.append(kep);
-      kartyaBody.append([kartyaCim, kartyaLeiras, kartyaGombb]);
+      kartyaBody.append([kartyaCim, kartyaLeiras, kartyaAr, kartyaGombb]);
       kartya.append(kartyaBody);
       termekekELEM.append(kartya);
 /*       szoveg+=`<div class="card" style="width: 18rem;">
@@ -30,8 +40,28 @@ export function listaOsszeallit(lista) {
       </div>`; */
     }
     /* return szoveg; */
+    return kosar;
 }
 
+
+export function kosarMegjelenit(kosar) {
+  const kosarELEM = $(".kosar");
+  const vegosszegELEM = $("#vegosszeg");
+  let ar = 0;
+/*   let szoveg = ""; */
+  let kosarKartya = $(`<div class="kosarKartya border border-primary"></div>`);
+  kosar.forEach(element => {
+    let kosarKartyaAr = $(`<p class="border">${element.ar}Ft</p>`)
+    let kosarKartyaNev = $(`<p class="border">${element.nev}</p>`)
+    kosarKartya.append([kosarKartyaNev, kosarKartyaAr])
+/*     szoveg += element.ar
+    szoveg += "<br>"; */
+    ar += element.ar;
+  });
+  kosarELEM.html(kosarKartya);
+  let ft = " - Ft"
+  vegosszegELEM.html([ar, ft]);
+}
 /* export function listaMegjelenit(szoveg) {
     const termekekELEM = $(".termekek");
     termekekELEM.append(szoveg);
