@@ -1,6 +1,7 @@
 import { kosarhozAd } from "./basket.js";
 import { kosar } from "./basket.js";
 import { osszErtek } from "./basket.js";
+/* import { torolEsemeny } from "./main.js"; */
 
 export function szures(lista, keresoSzoveg) {
   const szurtLista = lista.filter(function(termek){
@@ -50,10 +51,11 @@ export function kosarMegjelenit(kosar) {
   let ar = 0;
 /*   let szoveg = ""; */
   let kosarKartya = $(`<div class="kosarKartya border border-primary"></div>`);
-  kosar.forEach(element => {
+  kosar.forEach((element,index) => {
     let kosarKartyaAr = $(`<p class="border">${element.ar}Ft</p>`)
     let kosarKartyaNev = $(`<p class="border">${element.nev}</p>`)
-    kosarKartya.append([kosarKartyaNev, kosarKartyaAr])
+    let torlesGombb = $(`<button id="${index}" class="torlesGombb border border-danger danger">Törlés</button>`)
+    kosarKartya.append([kosarKartyaNev, kosarKartyaAr, torlesGombb])
 /*     szoveg += element.ar
     szoveg += "<br>"; */
     ar += element.ar;
@@ -61,8 +63,33 @@ export function kosarMegjelenit(kosar) {
   kosarELEM.html(kosarKartya);
   let ft = " - Ft"
   vegosszegELEM.html([ar, ft]);
+  let torlesGombbok = $(".torlesGombb");
+  torlesGombbok.on("click", function(event){
+    let index = event.target.id;
+    torol(kosar, index);
+    kosarMegjelenit(kosar);
+  })
+/*   return kosarELEM; */
 }
+
+export function torol(lista, index){
+  lista.splice(index, 1);
+  return lista;
+}
+
 /* export function listaMegjelenit(szoveg) {
     const termekekELEM = $(".termekek");
     termekekELEM.append(szoveg);
 } */
+
+export function rendez(lista, kulcs, rIrany) {
+  const rlista = lista.sort(function(t1,t2) {
+      return t1[kulcs]<t2[kulcs]?-1*rIrany:1*rIrany;
+  });
+  return rlista;
+}
+
+export function rendezEsemeny(lista){
+  return listaOsszeallit(rendez(lista, "ar", 1));
+}
+

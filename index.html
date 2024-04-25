@@ -1,57 +1,82 @@
 <!DOCTYPE html>
 <html lang="hu">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script type="module" src="main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <main>
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container-fluid">
-                  <a class="navbar-brand" href="#">Webáruház</a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Termékeink</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Kosár</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Személyes adatok</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">Admin oldal</a>
-                      </li>
-                    </ul>
-                    <form class="d-flex">
-                      <input id="kereses" class="form-control me-2" type="search" placeholder="Keresés" aria-label="Search">
-                      <button class="btn btn-outline-success" type="submit">Keresés</button>
-                    </form>
-                  </div>
-                </div>
-              </nav>
-        </header>    
-        <div class="tarolo">
-          <article>
-            <div class="termekek"></div>
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Webáruház</a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >Termékeink</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Kosár</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Személyes adatok</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Admin oldal</a>
+                </li>
+              </ul>
+              <form class="d-flex">
+                <input
+                  id="kereses"
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="Keresés"
+                  aria-label="Search"
+                />
+                <button class="btn btn-outline-success" type="submit">
+                  Keresés
+                </button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <div class="rendezesGombok">
+        <button type="button" class="btn btn-primary">Rendezés név szerint🅰🅱</button>
+        <button type="button" id="rendezArSzerint" class="btn btn-success">Rendezés ár szerint 🔼🔽</button>
+      </div>
+      <div class="tarolo">
+        <article>
+          <div class="termekek"></div>
         </article>
         <aside class="border border-primary">
           <h2>Kosár:</h2>
-          <div class="kosar border-primary">
-          </div>
-          <h3 id="vegosszeg">Végösszeg: </h3>
+          <div class="kosar border-primary"></div>
+          <h4>Végösszeg:</h4>
+          <h5 id="vegosszeg"></h5>
         </aside>
-        </div>
+      </div>
     </main>
-</body>
+  </body>
 </html>

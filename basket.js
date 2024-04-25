@@ -12,3 +12,12 @@ export function osszErtek(){
     });
     return vegosszeg;
 }
+
+/* export function torlesKosarbol(lista, index){
+    let torlesGombb = $("#torlesGombb");
+    lista.forEach((element,index) => {
+        torlesGombb.on("click", function(){
+            element[index].remove();
+        });
+    });
+} */
