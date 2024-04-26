@@ -1,7 +1,6 @@
 import { kosarhozAd } from "./basket.js";
 import { kosar } from "./basket.js";
 import { osszErtek } from "./basket.js";
-/* import { torolEsemeny } from "./main.js"; */
 
 export function szures(lista, keresoSzoveg) {
   const szurtLista = lista.filter(function(termek){
@@ -11,8 +10,7 @@ export function szures(lista, keresoSzoveg) {
 }
 
 export function listaOsszeallit(lista) {
-  console.log(lista);
-    /* let szoveg = ""; */
+    /* console.log(lista); */
     const termekekELEM = $(".termekek");
     for (let index = 0; index < lista.length; index++) {
       let kartya = $(`<div class="card" style="width: 18rem;"></div>`);
@@ -21,43 +19,30 @@ export function listaOsszeallit(lista) {
       let kartyaCim = $(`<h5 class="card-title">${lista[index].nev}</h5>`);
       let kartyaAr = $(`<p>${lista[index].ar}Ft</p>`)
       let kartyaLeiras = $(`<p class="card-text">${lista[index].leiras}</p>`);
-      let kartyaGombb = $(`<button class="btn btn-primary">Kosárba</button>`);
+      let kartyaGombb = $(`<button class="kosarbaGombb btn btn-primary">Kosárba</button>`);
       kartyaGombb.on("click", function(){
           kosarhozAd(lista[index]);
           kosarMegjelenit(kosar);
-          console.log(kosar);
+          /* console.log(kosar); */
       });
       kartya.append(kep);
       kartyaBody.append([kartyaCim, kartyaLeiras, kartyaAr, kartyaGombb]);
       kartya.append(kartyaBody);
       termekekELEM.append(kartya);
-/*       szoveg+=`<div class="card" style="width: 18rem;">
-      <img src="${lista[index].kep}" class="card-img-top" alt="${lista[index].nev}">
-      <div class="card-body">
-      <h5 class="card-title">${lista[index].nev}</h5>
-      <p class="card-text">${lista[index].leiras}</p>
-      <a href="#" class="btn btn-primary">Kosárba</a>
-      </div>
-      </div>`; */
     }
-    /* return szoveg; */
-    return kosar;
+    /* return kartya; */
 }
-
 
 export function kosarMegjelenit(kosar) {
   const kosarELEM = $(".kosar");
   const vegosszegELEM = $("#vegosszeg");
   let ar = 0;
-/*   let szoveg = ""; */
   let kosarKartya = $(`<div class="kosarKartya border border-primary"></div>`);
   kosar.forEach((element,index) => {
     let kosarKartyaAr = $(`<p class="border">${element.ar}Ft</p>`)
     let kosarKartyaNev = $(`<p class="border">${element.nev}</p>`)
     let torlesGombb = $(`<button id="${index}" class="torlesGombb border border-danger danger">Törlés</button>`)
     kosarKartya.append([kosarKartyaNev, kosarKartyaAr, torlesGombb])
-/*     szoveg += element.ar
-    szoveg += "<br>"; */
     ar += element.ar;
   });
   kosarELEM.html(kosarKartya);
@@ -69,7 +54,6 @@ export function kosarMegjelenit(kosar) {
     torol(kosar, index);
     kosarMegjelenit(kosar);
   })
-/*   return kosarELEM; */
 }
 
 export function torol(lista, index){
@@ -77,19 +61,44 @@ export function torol(lista, index){
   return lista;
 }
 
-/* export function listaMegjelenit(szoveg) {
-    const termekekELEM = $(".termekek");
-    termekekELEM.append(szoveg);
-} */
-
-export function rendez(lista, kulcs, rIrany) {
-  const rlista = lista.sort(function(t1,t2) {
-      return t1[kulcs]<t2[kulcs]?-1*rIrany:1*rIrany;
+export function rendezArSzerint(lista, rIrany) {
+  const rendezettLista = lista.sort(function(termek1, termek2) {
+    return termek1.ar - termek2.ar;
   });
-  return rlista;
+  if (rIrany == -1) {
+    rendezettLista.reverse();
+  }
+  return rendezettLista;
 }
 
-export function rendezEsemeny(lista){
-  return listaOsszeallit(rendez(lista, "ar", 1));
+export function rendezettListaMegjelenitese(rendezettLista) {
+  const termekekELEM = $(".termekek");
+  termekekELEM.empty();
+  rendezettLista.forEach(function(termek) {
+    let kartya = $(`<div class="card" style="width: 18rem;">
+    <img src="${termek.kep}" class="card-img-top" alt="${termek.nev}">
+    <div class="card-body">
+      <h5 class="card-title">${termek.nev}</h5>
+      <p class="card-text">${termek.leiras}</p>
+      <p>${termek.ar}Ft</p>
+      <button class="btn btn-primary">Kosárba</button>
+    </div>
+  </div>
+`);
+/* const kosarbaGombb = $(".kosarbaGombb"); */
+/* kosarbaGombb.on("click", function(){) */
+kartya.find("button").on("click", function(){
+  kosarhozAd(termek);
+  kosarMegjelenit(kosar);
+});
+termekekELEM.append(kartya);
+});
 }
 
+export function rendez(lista) {
+  const rendezArSzerintGOMB = $("#rendezArSzerint");
+  rendezArSzerintGOMB.on("click", function(){
+      let rIrany = -1;
+      rendezettListaMegjelenitese(rendezArSzerint(lista, rIrany));
+  })
+}

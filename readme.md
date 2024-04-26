@@ -13,7 +13,7 @@ main.js :
 fuggvenyek.js : 
     Függvények:
         listaOsszeallit(lista);
-        A függvény bemenete egy lista nevű tömb, amelynek elemei termékobjektumokat tartalmaznak. A függvény végigmegy a lista elemein egy for ciklussal, és mindegyik termékobjektumhoz létrehoz egy HTML kártya elemet `(<div class="card">)` a Bootstrap keretrendszer használatával.
+        A függvény bemenete egy lista nevű tömb, amelynek elemei termékobjektumokat tartalmaznak. A függvény végigmegy a lista elemein egy for ciklussal, és mindegyik termékobjektumhoz létrehoz egy HTML kártya elemet <!-- (<div class="card">) --> a Bootstrap keretrendszer használatával.
 
         A gombra egy eseménykezelőt on("click") is hozzáad, amely meghívja a kosarhozAd() függvényt a megfelelő termékobjektummal, majd frissíti a kosár megjelenítését a kosarMegjelenit függvénnyel.
 
