@@ -95,10 +95,44 @@ termekekELEM.append(kartya);
 });
 }
 
-export function rendez(lista) {
+/* export function rendez(lista) {
   const rendezArSzerintGOMB = $("#rendezArSzerint");
   rendezArSzerintGOMB.on("click", function(){
-      let rIrany = -1;
+    let rIrany = 1;
       rendezettListaMegjelenitese(rendezArSzerint(lista, rIrany));
+      rIrany*=-1;
   })
+} */
+
+export function rendez(lista) {
+  const rendezArSzerintGOMB = $("#rendezArSzerint");
+  let rIrany = 1;
+
+  rendezArSzerintGOMB.on("click", function() {
+    rIrany *= -1;
+    const rendezettLista = rendezArSzerint(lista, rIrany);
+    rendezettListaMegjelenitese(rendezettLista);
+  });
+}
+
+export function rendezNevSzerint(lista) {
+  const rendezesNevSzerintGOMBB = $("#rendezesNevSzerint");
+  let rIrany = 1;
+
+  rendezesNevSzerintGOMBB.on("click", function() {
+    rIrany *= -1;
+
+    const rendezettLista = lista.sort((a, b) => {
+      const nevA = a.nev.toUpperCase();
+      const nevB = b.nev.toUpperCase();
+
+      if (nevA < nevB) {
+        return -1 * rIrany;
+      }
+      if (nevA > nevB) {
+        return 1 * rIrany;
+      }
+    });
+    rendezettListaMegjelenitese(rendezettLista);
+  });
 }
