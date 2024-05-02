@@ -62,4 +62,25 @@ export const LISTA = [
     ar: 1500,
     kep: "kepek/so.png",
   },
+  {
+    nev: "Citronella",
+    leiras:
+      "A citronella (Cymbopogon nardus) hosszú, évelő, szabadföldi növény. Megjelenése a póréhagymához hasonlít. Sokan összekeverik a citromfűvel, mivel a citronella angol neve lemongrass.",
+    ar: 7200,
+    kep: "kepek/citronella.png",
+  },
+  {
+    nev: "Gyömbér",
+    leiras:
+      "A közönséges gyömbér (Zingiber officinale) a gyömbérfélék (Zingiberaceae) családjába tartozó növényfaj, fűszer- és gyógynövény.",
+    ar: 570,
+    kep: "kepek/gyömber.png",
+  },
+  {
+    nev: "🍆 Padlizsán 🍆",
+    leiras:
+      "A padlizsán (egyéb nevei: tojásgyümölcs, török paradicsom, Erdélyben vineta) (Solanum melongena) a burgonyafélék (Solanaceae) családjába, a csucsor (Solanum) nemzetségbe tartozó növényfaj, zöldségnövény.",
+    ar: 3200,
+    kep: "kepek/padlizsan.jpg",
+  },
 ];

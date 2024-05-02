@@ -1,6 +1,8 @@
 export const kosar = [];
 
 export function kosarhozAd(termek) {
+    //ha a kosárban márb van az adott termél, akkor termek.db=1
+    /* kosar.forEach(element => ) */
     kosar.push(termek);
     let ar = osszErtek();
 }
