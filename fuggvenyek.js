@@ -65,6 +65,7 @@ export function kosarMegjelenit(kosar) {
   let torlesGombbok = $(".torlesGombb");
   torlesGombbok.on("click", function(event){
     let index = event.target.id;
+/*     console.log(index); */
     torol(kosar, index);
     kosarMegjelenit(kosar);
   })
