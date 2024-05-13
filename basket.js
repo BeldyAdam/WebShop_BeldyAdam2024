@@ -1,10 +1,18 @@
 export const kosar = [];
 
 export function kosarhozAd(termek) {
-    //ha a kosárban márb van az adott termél, akkor termek.db=1
+    //ha a kosárban már van az adott termék, akkor termek.db=1
     /* kosar.forEach(element => ) */
-    kosar.push(termek);
     let ar = osszErtek();
+    let db = 0;
+/*     kosar.forEach(element => {
+        if(element.nev != termek.nev){
+            console.log(element.nev);
+        }else{
+            kosar.push(termek);
+        }
+    }); */
+    kosar.push(termek);
 }
 
 export function osszErtek(){
